@@ -1,9 +1,13 @@
 package com.maigrand.overwatchdb.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "ability")
+@Getter
+@Setter
 public class Ability {
 
     @Id
@@ -16,8 +20,8 @@ public class Ability {
 
     @ManyToOne
     @JoinColumn(
-            name="aimtype_id",
-            foreignKey = @ForeignKey(name="fk_ability_aimtype")
+            name = "aimtype_id",
+            foreignKey = @ForeignKey(name = "fk_ability_aimtype")
     )
     private AimType aimType;
 
