@@ -3,7 +3,7 @@ spring.datasource.hikari.connectionTimeout=20000
 spring.datasource.hikari.maximumPoolSize=5
 
 ## PostgreSQL
-spring.datasource.url=jdbc:postgresql://localhost:5432/owdb?createDatabaseIfNotExist=true
+spring.datasource.url=jdbc:postgresql://localhost:5432/owdb
 spring.datasource.username=postgres
 spring.datasource.password=postgres
 
