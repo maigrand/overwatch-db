@@ -6,5 +6,5 @@ import lombok.Data;
 public class HeroDetails {
 
     private String name;
-    private Long roleId;
+    private Integer roleId;
 }

@@ -21,7 +21,7 @@ public class AimTypeService {
         return aimTypeRepository.findAll();
     }
 
-    public AimType findById(Long id) {
+    public AimType findById(Integer id) {
         return aimTypeRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }

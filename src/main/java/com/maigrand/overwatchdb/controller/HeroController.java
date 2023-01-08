@@ -26,7 +26,7 @@ public class HeroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Hero> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<Hero> findById(@PathVariable("id") Integer id) {
         Hero hero = heroService.findById(id);
         return ResponseEntity.ok(hero);
     }

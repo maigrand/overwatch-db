@@ -21,7 +21,7 @@ public class RoleService {
         return roleRepository.findAll();
     }
 
-    public Role findById(Long id) {
+    public Role findById(Integer id) {
         return roleRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }

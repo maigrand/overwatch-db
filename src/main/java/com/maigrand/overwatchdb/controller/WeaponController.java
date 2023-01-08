@@ -26,7 +26,7 @@ public class WeaponController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Weapon> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<Weapon> findById(@PathVariable("id") Integer id) {
         Weapon weapon = weaponService.findById(id);
         return ResponseEntity.ok(weapon);
     }
