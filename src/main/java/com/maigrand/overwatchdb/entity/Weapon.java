@@ -1,23 +1,27 @@
 package com.maigrand.overwatchdb.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name="weapon")
+@Table(name = "weapon")
+@Getter
+@Setter
 public class Weapon {
 
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @ManyToOne
     @JoinColumn(
-            name="aimtype_id",
-            foreignKey = @ForeignKey(name="fk_weapon_aimtype")
+            name = "aimtype_id",
+            foreignKey = @ForeignKey(name = "fk_weapon_aimtype")
     )
     private AimType aimType;
 
