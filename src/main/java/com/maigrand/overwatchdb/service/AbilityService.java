@@ -34,7 +34,7 @@ public class AbilityService {
         Ability ability = new Ability();
         ability.setName(details.getName());
         ability.setAimType(aimTypeService.findById(details.getAimTypeId()));
-        ability.setHero(heroService.findById(details.getAimTypeId()));
+        ability.setHero(heroService.findById(details.getHeroId()));
 
         return abilityRepository.save(ability);
     }
