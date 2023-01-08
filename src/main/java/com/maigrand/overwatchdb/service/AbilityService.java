@@ -29,6 +29,8 @@ public class AbilityService {
     public Ability create(AbilityDetails details) {
         Ability ability = new Ability();
         ability.setName(details.getName());
+        ability.setAimType(details.getAimType());
+        ability.setHero(details.getHero());
 
         return abilityRepository.save(ability);
     }

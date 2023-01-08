@@ -29,6 +29,7 @@ public class HeroService {
     public Hero create(HeroDetails details) {
         Hero hero = new Hero();
         hero.setName(details.getName());
+        hero.setRole(details.getRole());
 
         return heroRepository.save(hero);
     }

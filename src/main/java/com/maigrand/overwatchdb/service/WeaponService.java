@@ -29,6 +29,8 @@ public class WeaponService {
     public Weapon create(WeaponDetails details) {
         Weapon weapon = new Weapon();
         weapon.setName(details.getName());
+        weapon.setAimType(details.getAimType());
+        weapon.setHero(details.getHero());
 
         return weaponRepository.save(weapon);
     }
