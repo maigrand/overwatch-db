@@ -34,6 +34,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
+	testImplementation("com.h2database:h2:2.1.214")
 }
 
 tasks.withType<Test> {

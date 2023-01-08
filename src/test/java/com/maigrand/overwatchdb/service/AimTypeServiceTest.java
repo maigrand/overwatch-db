@@ -1,19 +1,18 @@
 package com.maigrand.overwatchdb.service;
 
+import com.maigrand.overwatchdb.AbstractTest;
 import com.maigrand.overwatchdb.entity.AimType;
 import com.maigrand.overwatchdb.payload.AimTypeDetails;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-public class AimTypeServiceTest {
+public class AimTypeServiceTest extends AbstractTest {
 
     @Autowired
     private AimTypeService aimTypeService;
