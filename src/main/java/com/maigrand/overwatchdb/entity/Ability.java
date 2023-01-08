@@ -13,7 +13,7 @@ public class Ability {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "name", nullable = false)
     private String name;

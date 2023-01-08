@@ -25,7 +25,7 @@ public class WeaponService {
         return weaponRepository.findAll();
     }
 
-    public Weapon findById(Long id) {
+    public Weapon findById(Integer id) {
         return weaponRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }

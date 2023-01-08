@@ -6,6 +6,6 @@ import lombok.Data;
 public class AbilityDetails {
 
     private String name;
-    private Long aimTypeId;
-    private Long heroId;
+    private Integer aimTypeId;
+    private Integer heroId;
 }

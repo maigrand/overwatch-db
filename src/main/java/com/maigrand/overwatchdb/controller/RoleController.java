@@ -26,7 +26,7 @@ public class RoleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Role> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<Role> findById(@PathVariable("id") Integer id) {
         Role role = roleService.findById(id);
         return ResponseEntity.ok(role);
     }

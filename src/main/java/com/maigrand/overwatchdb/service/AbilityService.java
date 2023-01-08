@@ -25,7 +25,7 @@ public class AbilityService {
         return abilityRepository.findAll();
     }
 
-    public Ability findById(Long id) {
+    public Ability findById(Integer id) {
         return abilityRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }

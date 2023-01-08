@@ -26,7 +26,7 @@ public class AimTypeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AimType> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<AimType> findById(@PathVariable("id") Integer id) {
         AimType aimType = aimTypeService.findById(id);
         return ResponseEntity.ok(aimType);
     }

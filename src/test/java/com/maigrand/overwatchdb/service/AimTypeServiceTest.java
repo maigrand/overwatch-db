@@ -30,7 +30,7 @@ public class AimTypeServiceTest extends AbstractTest {
 
     @Test
     public void findById() {
-        AimType aimType = aimTypeService.findById(1L);
+        AimType aimType = aimTypeService.findById(1);
 
         assertEquals(aimType.getType(), "TEST_TYPE");
     }
@@ -38,7 +38,7 @@ public class AimTypeServiceTest extends AbstractTest {
     @Test
     public void findById_throw_not_found() {
         assertThrows(EntityNotFoundException.class, () -> {
-            aimTypeService.findById(999999L);
+            aimTypeService.findById(999999);
         });
     }
 

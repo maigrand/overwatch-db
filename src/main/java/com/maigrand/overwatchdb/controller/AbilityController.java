@@ -25,7 +25,7 @@ public class AbilityController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Ability> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<Ability> findById(@PathVariable("id") Integer id) {
         Ability ability = abilityService.findById(id);
         return ResponseEntity.ok(ability);
     }

@@ -23,7 +23,7 @@ public class HeroService {
         return heroRepository.findAll();
     }
 
-    public Hero findById(Long id) {
+    public Hero findById(Integer id) {
         return heroRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }

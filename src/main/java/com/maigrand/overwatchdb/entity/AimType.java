@@ -15,7 +15,7 @@ public class AimType {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name="type", nullable = false)
     private String type;
