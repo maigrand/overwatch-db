@@ -6,4 +6,7 @@ import lombok.Data;
 public class WeaponDetails {
 
     private String name;
+    private Long aimTypeId;
+    private Long heroId;
+
 }

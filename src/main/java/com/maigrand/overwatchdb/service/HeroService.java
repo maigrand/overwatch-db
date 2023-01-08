@@ -12,8 +12,10 @@ import java.util.List;
 public class HeroService {
 
     private final HeroRepository heroRepository;
+    private final RoleService roleService;
 
-    public HeroService(HeroRepository heroRepository) {
+    public HeroService(HeroRepository heroRepository, RoleService roleService) {
+        this.roleService = roleService;
         this.heroRepository = heroRepository;
     }
 
@@ -29,6 +31,7 @@ public class HeroService {
     public Hero create(HeroDetails details) {
         Hero hero = new Hero();
         hero.setName(details.getName());
+        hero.setRole(roleService.findById(details.getRoleId()));
 
         return heroRepository.save(hero);
     }

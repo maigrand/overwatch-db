@@ -12,9 +12,13 @@ import java.util.List;
 public class AbilityService {
 
     private final AbilityRepository abilityRepository;
+    private final AimTypeService aimTypeService;
+    private final HeroService heroService;
 
-    public AbilityService(AbilityRepository abilityRepository) {
+    public AbilityService(AbilityRepository abilityRepository, AimTypeService aimTypeService, HeroService heroService) {
         this.abilityRepository = abilityRepository;
+        this.aimTypeService = aimTypeService;
+        this.heroService = heroService;
     }
 
     public List<Ability> findAll() {
@@ -29,6 +33,8 @@ public class AbilityService {
     public Ability create(AbilityDetails details) {
         Ability ability = new Ability();
         ability.setName(details.getName());
+        ability.setAimType(aimTypeService.findById(details.getAimTypeId()));
+        ability.setHero(heroService.findById(details.getAimTypeId()));
 
         return abilityRepository.save(ability);
     }

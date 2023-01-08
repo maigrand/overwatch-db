@@ -12,9 +12,13 @@ import java.util.List;
 public class WeaponService {
 
     private final WeaponRepository weaponRepository;
+    private final AimTypeService aimTypeService;
+    private final HeroService heroService;
 
-    public WeaponService(WeaponRepository weaponRepository) {
+    public WeaponService(WeaponRepository weaponRepository, AimTypeService aimTypeService, HeroService heroService) {
         this.weaponRepository = weaponRepository;
+        this.aimTypeService = aimTypeService;
+        this.heroService = heroService;
     }
 
     public List<Weapon> findAll() {
@@ -29,6 +33,8 @@ public class WeaponService {
     public Weapon create(WeaponDetails details) {
         Weapon weapon = new Weapon();
         weapon.setName(details.getName());
+        weapon.setAimType(aimTypeService.findById(details.getAimTypeId()));
+        weapon.setHero(heroService.findById(details.getHeroId()));
 
         return weaponRepository.save(weapon);
     }
