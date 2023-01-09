@@ -36,4 +36,10 @@ public class WeaponController {
         Weapon weapon = weaponService.create(details);
         return ResponseEntity.status(HttpStatus.CREATED).body(weapon);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Weapon> update(@PathVariable("id") Integer id, @RequestBody WeaponDetails details) {
+        Weapon weapon = weaponService.update(id, details);
+        return ResponseEntity.ok(weapon);
+    }
 }

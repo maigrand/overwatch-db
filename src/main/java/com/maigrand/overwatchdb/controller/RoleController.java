@@ -36,4 +36,10 @@ public class RoleController {
         Role role = roleService.create(details);
         return ResponseEntity.status(HttpStatus.CREATED).body(role);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Role> update(@PathVariable("id") Integer id, @RequestBody RoleDetails details) {
+        Role role = roleService.update(id, details);
+        return ResponseEntity.ok(role);
+    }
 }

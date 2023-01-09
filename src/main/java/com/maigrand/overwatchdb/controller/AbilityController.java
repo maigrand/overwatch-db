@@ -35,4 +35,10 @@ public class AbilityController {
         Ability ability = abilityService.create(details);
         return ResponseEntity.status(HttpStatus.CREATED).body(ability);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Ability> update(@PathVariable("id") Integer id, @RequestBody AbilityDetails details) {
+        Ability ability = abilityService.update(id, details);
+        return ResponseEntity.ok(ability);
+    }
 }

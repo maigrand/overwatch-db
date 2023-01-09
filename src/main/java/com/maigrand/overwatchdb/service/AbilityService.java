@@ -1,14 +1,21 @@
 package com.maigrand.overwatchdb.service;
 
 import com.maigrand.overwatchdb.entity.Ability;
+import com.maigrand.overwatchdb.entity.AimType;
+import com.maigrand.overwatchdb.entity.Hero;
 import com.maigrand.overwatchdb.payload.AbilityDetails;
 import com.maigrand.overwatchdb.repository.AbilityRepository;
+import com.maigrand.overwatchdb.validator.OnCreate;
+import com.maigrand.overwatchdb.validator.OnUpdate;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Validated
 public class AbilityService {
 
     private final AbilityRepository abilityRepository;
@@ -30,11 +37,28 @@ public class AbilityService {
                 .orElseThrow(EntityNotFoundException::new);
     }
 
+    @Validated(OnCreate.class)
     public Ability create(AbilityDetails details) {
         Ability ability = new Ability();
         ability.setName(details.getName());
         ability.setAimType(aimTypeService.findById(details.getAimTypeId()));
         ability.setHero(heroService.findById(details.getHeroId()));
+
+        return abilityRepository.save(ability);
+    }
+
+    @Validated(OnUpdate.class)
+    public Ability update(Integer id, AbilityDetails details) {
+        Ability ability = findById(id);
+        Optional.ofNullable(details.getName()).ifPresent(ability::setName);
+        Optional.ofNullable(details.getAimTypeId()).ifPresent((aimTypeId) -> {
+            AimType aimType = aimTypeService.findById(aimTypeId);
+            ability.setAimType(aimType);
+        });
+        Optional.ofNullable(details.getHeroId()).ifPresent((heroId) -> {
+            Hero hero = heroService.findById(heroId);
+            ability.setHero(hero);
+        });
 
         return abilityRepository.save(ability);
     }

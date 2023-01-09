@@ -36,4 +36,10 @@ public class AimTypeController {
         AimType aimType = aimTypeService.create(details);
         return ResponseEntity.status(HttpStatus.CREATED).body(aimType);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<AimType> update(@PathVariable("id") Integer id, @RequestBody AimTypeDetails details) {
+        AimType aimType = aimTypeService.update(id, details);
+        return ResponseEntity.ok(aimType);
+    }
 }
