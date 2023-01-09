@@ -1,15 +1,16 @@
 package com.maigrand.overwatchdb.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "hero")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Hero {
 
     @Id
@@ -32,4 +33,21 @@ public class Hero {
 
     @OneToMany(mappedBy = "hero", fetch = FetchType.EAGER)
     private Set<Ability> abilities;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Hero hero = (Hero) o;
+        return Objects.equals(id, hero.id) && Objects.equals(name, hero.name) && Objects.equals(role, hero.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, role);
+    }
 }

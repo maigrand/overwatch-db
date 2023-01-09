@@ -36,4 +36,10 @@ public class HeroController {
         Hero hero = heroService.create(details);
         return ResponseEntity.status(HttpStatus.CREATED).body(hero);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Hero> update(@PathVariable("id") Integer id, @RequestBody HeroDetails details) {
+        Hero hero = heroService.update(id, details);
+        return ResponseEntity.ok(hero);
+    }
 }

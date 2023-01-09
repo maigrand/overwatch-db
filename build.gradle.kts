@@ -25,6 +25,7 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
 	//implementation("org.liquibase:liquibase-core")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
