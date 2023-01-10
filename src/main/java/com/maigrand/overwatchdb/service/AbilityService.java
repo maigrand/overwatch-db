@@ -9,6 +9,7 @@ import com.maigrand.overwatchdb.validator.OnUpdate;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,7 @@ public class AbilityService {
     }
 
     @Validated(OnCreate.class)
-    public Ability create(AbilityDetails details) {
+    public Ability create(@Valid AbilityDetails details) {
         Ability ability = new Ability();
         ability.setName(details.getName());
         ability.setAimType(aimTypeService.findById(details.getAimTypeId()));
@@ -46,7 +47,7 @@ public class AbilityService {
     }
 
     @Validated(OnUpdate.class)
-    public Ability update(Integer id, AbilityDetails details) {
+    public Ability update(Integer id, @Valid AbilityDetails details) {
         Ability ability = findById(id);
         Optional.ofNullable(details.getName()).ifPresent(ability::setName);
         Optional.ofNullable(details.getAimTypeId()).ifPresent((aimTypeId) -> {
