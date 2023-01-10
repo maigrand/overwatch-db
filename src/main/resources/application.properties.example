@@ -9,3 +9,8 @@ spring.datasource.password=postgres
 
 #drop n create table again, good for testing, comment this in production
 spring.jpa.hibernate.ddl-auto=create
+
+
+# настройка_для_пути_сваггера=дефолт_значение
+# springdoc.api-docs.path=/v3/api-docs - json
+# springdoc.swagger-ui.path=/swagger-ui.html - ui
