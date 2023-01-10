@@ -1,9 +1,10 @@
 package com.maigrand.overwatchdb.payload;
 
 import com.maigrand.overwatchdb.validator.OnCreate;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -17,5 +18,4 @@ public class WeaponDetails {
 
     @NotNull(message = "{heroId.not_null}", groups = OnCreate.class)
     private Integer heroId;
-
 }

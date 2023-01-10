@@ -1,7 +1,7 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.0.1"
-	id("io.spring.dependency-management") version "1.1.0"
+	id("org.springframework.boot") version "2.7.7"
+	id("io.spring.dependency-management") version "1.0.15.RELEASE"
 }
 
 group = "com.maigrand"
@@ -25,10 +25,8 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
-	implementation("org.glassfish.expressly:expressly:5.0.0")
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
-	//implementation("org.liquibase:liquibase-core")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")

@@ -2,8 +2,8 @@ package com.maigrand.overwatchdb.service;
 
 import com.maigrand.overwatchdb.AbstractTest;
 import com.maigrand.overwatchdb.entity.AimType;
+import com.maigrand.overwatchdb.exception.EntityNotFoundException;
 import com.maigrand.overwatchdb.payload.AimTypeDetails;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Commit;

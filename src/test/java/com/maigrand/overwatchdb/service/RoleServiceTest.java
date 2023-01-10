@@ -2,18 +2,18 @@ package com.maigrand.overwatchdb.service;
 
 import com.maigrand.overwatchdb.AbstractTest;
 import com.maigrand.overwatchdb.entity.Role;
+import com.maigrand.overwatchdb.exception.EntityNotFoundException;
 import com.maigrand.overwatchdb.payload.RoleDetails;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Commit;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RoleServiceTest extends AbstractTest {
+
     @Autowired
     private RoleService roleService;
 

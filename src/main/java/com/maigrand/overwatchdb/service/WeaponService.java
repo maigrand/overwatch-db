@@ -1,17 +1,15 @@
 package com.maigrand.overwatchdb.service;
 
-import com.maigrand.overwatchdb.entity.AimType;
-import com.maigrand.overwatchdb.entity.Hero;
-import com.maigrand.overwatchdb.entity.Weapon;
+import com.maigrand.overwatchdb.entity.*;
+import com.maigrand.overwatchdb.exception.EntityNotFoundException;
 import com.maigrand.overwatchdb.payload.WeaponDetails;
 import com.maigrand.overwatchdb.repository.WeaponRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +33,7 @@ public class WeaponService {
 
     public Weapon findById(Integer id) {
         return weaponRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Weapon not found"));
     }
 
     @Validated(OnCreate.class)

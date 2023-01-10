@@ -2,11 +2,11 @@ package com.maigrand.overwatchdb.service;
 
 import com.maigrand.overwatchdb.entity.Hero;
 import com.maigrand.overwatchdb.entity.Role;
+import com.maigrand.overwatchdb.exception.EntityNotFoundException;
 import com.maigrand.overwatchdb.payload.HeroDetails;
 import com.maigrand.overwatchdb.repository.HeroRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -31,7 +31,7 @@ public class HeroService {
 
     public Hero findById(Integer id) {
         return heroRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Hero not found"));
     }
 
     @Validated(OnCreate.class)

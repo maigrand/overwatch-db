@@ -1,13 +1,11 @@
 package com.maigrand.overwatchdb.service;
 
-import com.maigrand.overwatchdb.entity.Ability;
-import com.maigrand.overwatchdb.entity.AimType;
-import com.maigrand.overwatchdb.entity.Hero;
+import com.maigrand.overwatchdb.entity.*;
+import com.maigrand.overwatchdb.exception.EntityNotFoundException;
 import com.maigrand.overwatchdb.payload.AbilityDetails;
 import com.maigrand.overwatchdb.repository.AbilityRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -34,7 +32,7 @@ public class AbilityService {
 
     public Ability findById(Integer id) {
         return abilityRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Ability not found"));
     }
 
     @Validated(OnCreate.class)

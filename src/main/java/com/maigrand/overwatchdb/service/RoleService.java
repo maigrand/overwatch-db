@@ -1,15 +1,11 @@
 package com.maigrand.overwatchdb.service;
 
-import com.maigrand.overwatchdb.entity.Ability;
-import com.maigrand.overwatchdb.entity.AimType;
-import com.maigrand.overwatchdb.entity.Hero;
 import com.maigrand.overwatchdb.entity.Role;
-import com.maigrand.overwatchdb.payload.AbilityDetails;
+import com.maigrand.overwatchdb.exception.EntityNotFoundException;
 import com.maigrand.overwatchdb.payload.RoleDetails;
 import com.maigrand.overwatchdb.repository.RoleRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -32,7 +28,7 @@ public class RoleService {
 
     public Role findById(Integer id) {
         return roleRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Role not found"));
     }
 
     @Validated(OnCreate.class)

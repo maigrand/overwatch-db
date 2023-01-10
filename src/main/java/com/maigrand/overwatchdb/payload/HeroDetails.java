@@ -1,8 +1,9 @@
 package com.maigrand.overwatchdb.payload;
 
 import com.maigrand.overwatchdb.validator.OnCreate;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 public class HeroDetails {
