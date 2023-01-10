@@ -1,11 +1,11 @@
 package com.maigrand.overwatchdb.service;
 
 import com.maigrand.overwatchdb.entity.AimType;
+import com.maigrand.overwatchdb.exception.EntityNotFoundException;
 import com.maigrand.overwatchdb.payload.AimTypeDetails;
 import com.maigrand.overwatchdb.repository.AimTypeRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -28,7 +28,7 @@ public class AimTypeService {
 
     public AimType findById(Integer id) {
         return aimTypeRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("AimType not found"));
     }
 
     @Validated(OnCreate.class)
