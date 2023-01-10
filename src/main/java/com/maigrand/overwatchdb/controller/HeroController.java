@@ -1,18 +1,19 @@
 package com.maigrand.overwatchdb.controller;
 
 import com.maigrand.overwatchdb.entity.Hero;
-import com.maigrand.overwatchdb.payload.HeroDetails;
 import com.maigrand.overwatchdb.service.HeroService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/admin/hero")
-@Tag(name = "ADMIN: Hero")
+@RequestMapping("/api/v1/hero")
+@Tag(name = "USER: Hero")
 public class HeroController {
 
     private final HeroService heroService;
@@ -30,18 +31,6 @@ public class HeroController {
     @GetMapping("/{id}")
     public ResponseEntity<Hero> findById(@PathVariable("id") Integer id) {
         Hero hero = heroService.findById(id);
-        return ResponseEntity.ok(hero);
-    }
-
-    @PostMapping
-    public ResponseEntity<Hero> create(@RequestBody HeroDetails details) {
-        Hero hero = heroService.create(details);
-        return ResponseEntity.status(HttpStatus.CREATED).body(hero);
-    }
-
-    @PatchMapping("/{id}")
-    public ResponseEntity<Hero> update(@PathVariable("id") Integer id, @RequestBody HeroDetails details) {
-        Hero hero = heroService.update(id, details);
         return ResponseEntity.ok(hero);
     }
 }

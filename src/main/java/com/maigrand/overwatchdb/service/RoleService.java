@@ -9,6 +9,7 @@ import com.maigrand.overwatchdb.validator.OnUpdate;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,7 @@ public class RoleService {
     }
 
     @Validated(OnCreate.class)
-    public Role create(RoleDetails details) {
+    public Role create(@Valid RoleDetails details) {
         Role role = new Role();
         role.setName(details.getName());
         role.setGroupBuff(details.getGroupBuff());
@@ -41,7 +42,7 @@ public class RoleService {
     }
 
     @Validated(OnUpdate.class)
-    public Role update(Integer id, RoleDetails details) {
+    public Role update(Integer id, @Valid RoleDetails details) {
         Role role = findById(id);
         Optional.ofNullable(details.getName()).ifPresent(role::setName);
         Optional.ofNullable(details.getGroupBuff()).ifPresent(role::setGroupBuff);

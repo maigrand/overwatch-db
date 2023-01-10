@@ -10,6 +10,7 @@ import com.maigrand.overwatchdb.validator.OnUpdate;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class HeroService {
     }
 
     @Validated(OnCreate.class)
-    public Hero create(HeroDetails details) {
+    public Hero create(@Valid HeroDetails details) {
         Hero hero = new Hero();
         hero.setName(details.getName());
         hero.setRole(roleService.findById(details.getRoleId()));
@@ -44,7 +45,7 @@ public class HeroService {
     }
 
     @Validated(OnUpdate.class)
-    public Hero update(Integer id, HeroDetails details) {
+    public Hero update(Integer id, @Valid HeroDetails details) {
         Hero hero = findById(id);
         Optional.ofNullable(details.getName()).ifPresent(hero::setName);
         Optional.ofNullable(details.getRoleId()).ifPresent((roleId) -> {

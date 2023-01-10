@@ -1,18 +1,20 @@
 package com.maigrand.overwatchdb.controller;
 
+
 import com.maigrand.overwatchdb.entity.AimType;
-import com.maigrand.overwatchdb.payload.AimTypeDetails;
 import com.maigrand.overwatchdb.service.AimTypeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/admin/aimtype")
-@Tag(name = "ADMIN: AimType")
+@RequestMapping("/api/v1/aimtype")
+@Tag(name = "USER: AimType")
 public class AimTypeController {
 
     private final AimTypeService aimTypeService;
@@ -30,18 +32,6 @@ public class AimTypeController {
     @GetMapping("/{id}")
     public ResponseEntity<AimType> findById(@PathVariable("id") Integer id) {
         AimType aimType = aimTypeService.findById(id);
-        return ResponseEntity.ok(aimType);
-    }
-
-    @PostMapping
-    public ResponseEntity<AimType> create(@RequestBody AimTypeDetails details) {
-        AimType aimType = aimTypeService.create(details);
-        return ResponseEntity.status(HttpStatus.CREATED).body(aimType);
-    }
-
-    @PatchMapping("/{id}")
-    public ResponseEntity<AimType> update(@PathVariable("id") Integer id, @RequestBody AimTypeDetails details) {
-        AimType aimType = aimTypeService.update(id, details);
         return ResponseEntity.ok(aimType);
     }
 }

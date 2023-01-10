@@ -9,6 +9,7 @@ import com.maigrand.overwatchdb.validator.OnUpdate;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,7 @@ public class AimTypeService {
     }
 
     @Validated(OnCreate.class)
-    public AimType create(AimTypeDetails details) {
+    public AimType create(@Valid AimTypeDetails details) {
         AimType aimType = new AimType();
         aimType.setType(details.getType());
 
@@ -40,7 +41,7 @@ public class AimTypeService {
     }
 
     @Validated(OnUpdate.class)
-    public AimType update(Integer id, AimTypeDetails details) {
+    public AimType update(Integer id, @Valid AimTypeDetails details) {
         AimType aimType = findById(id);
         Optional.ofNullable(details.getType()).ifPresent(aimType::setType);
 
