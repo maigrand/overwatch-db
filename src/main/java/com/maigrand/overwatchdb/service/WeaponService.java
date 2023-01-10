@@ -8,6 +8,7 @@ import com.maigrand.overwatchdb.repository.WeaponRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -38,7 +39,7 @@ public class WeaponService {
     }
 
     @Validated(OnCreate.class)
-    public Weapon create(WeaponDetails details) {
+    public Weapon create(@Valid WeaponDetails details) {
         Weapon weapon = new Weapon();
         weapon.setName(details.getName());
         weapon.setAimType(aimTypeService.findById(details.getAimTypeId()));
@@ -48,7 +49,7 @@ public class WeaponService {
     }
 
     @Validated(OnUpdate.class)
-    public Weapon update(Integer id, WeaponDetails details) {
+    public Weapon update(Integer id, @Valid WeaponDetails details) {
         Weapon weapon = findById(id);
         Optional.ofNullable(details.getName()).ifPresent(weapon::setName);
         Optional.ofNullable(details.getAimTypeId()).ifPresent((aimTypeId) -> {
