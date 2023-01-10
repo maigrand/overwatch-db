@@ -24,11 +24,10 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
-	implementation("org.glassfish:jakarta.el:4.0.2")
+	implementation("org.glassfish.expressly:expressly:5.0.0")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.0.2")
 	//implementation("org.liquibase:liquibase-core")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -36,7 +35,6 @@ dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
 	testImplementation("com.h2database:h2:2.1.214")
 }
