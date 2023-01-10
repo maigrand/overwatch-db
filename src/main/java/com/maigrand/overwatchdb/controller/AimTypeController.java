@@ -3,6 +3,7 @@ package com.maigrand.overwatchdb.controller;
 import com.maigrand.overwatchdb.entity.AimType;
 import com.maigrand.overwatchdb.payload.AimTypeDetails;
 import com.maigrand.overwatchdb.service.AimTypeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin/aimtype")
+@Tag(name = "ADMIN: AimType")
 public class AimTypeController {
 
     private final AimTypeService aimTypeService;

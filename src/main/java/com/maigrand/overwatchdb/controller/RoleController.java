@@ -3,6 +3,7 @@ package com.maigrand.overwatchdb.controller;
 import com.maigrand.overwatchdb.entity.Role;
 import com.maigrand.overwatchdb.payload.RoleDetails;
 import com.maigrand.overwatchdb.service.RoleService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin/role")
+@Tag(name = "ADMIN: Role")
 public class RoleController {
 
     private final RoleService roleService;

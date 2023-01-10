@@ -3,6 +3,7 @@ package com.maigrand.overwatchdb.controller;
 import com.maigrand.overwatchdb.entity.Weapon;
 import com.maigrand.overwatchdb.payload.WeaponDetails;
 import com.maigrand.overwatchdb.service.WeaponService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin/weapon")
+@Tag(name = "ADMIN: Weapon")
 public class WeaponController {
 
     private final WeaponService weaponService;

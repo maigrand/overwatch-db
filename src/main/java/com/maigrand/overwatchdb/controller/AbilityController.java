@@ -3,6 +3,7 @@ package com.maigrand.overwatchdb.controller;
 import com.maigrand.overwatchdb.entity.Ability;
 import com.maigrand.overwatchdb.payload.AbilityDetails;
 import com.maigrand.overwatchdb.service.AbilityService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin/ability")
+@Tag(name = "ADMIN: Ability")
 public class AbilityController {
     private final AbilityService abilityService;
 

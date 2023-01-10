@@ -3,6 +3,7 @@ package com.maigrand.overwatchdb.controller;
 import com.maigrand.overwatchdb.entity.Hero;
 import com.maigrand.overwatchdb.payload.HeroDetails;
 import com.maigrand.overwatchdb.service.HeroService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin/hero")
+@Tag(name = "ADMIN: Hero")
 public class HeroController {
 
     private final HeroService heroService;
