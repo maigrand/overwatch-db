@@ -14,3 +14,7 @@ spring.jpa.hibernate.ddl-auto=create
 # настройка_для_пути_сваггера=дефолт_значение
 # springdoc.api-docs.path=/v3/api-docs - json
 # springdoc.swagger-ui.path=/swagger-ui.html - ui
+
+# app.security.jwt.secret=<BIG secret>
+# app.security.jwt.expiration-time=36000000
+# app.security.jwt.remember-me-expiration-time=2592000000

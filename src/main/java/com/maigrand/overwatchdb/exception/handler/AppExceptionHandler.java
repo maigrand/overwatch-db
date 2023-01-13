@@ -6,6 +6,8 @@ import lombok.NonNull;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -35,8 +37,15 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         List<String> details = new ArrayList<>();
 
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+        if (ex instanceof AuthenticationException) {
+            httpStatus = HttpStatus.BAD_REQUEST;
+        } else if (ex instanceof AccessDeniedException) {
+            httpStatus = HttpStatus.FORBIDDEN;
+        }
 
-        eventPublisher.publishEvent(new ErrorEvent(this, ex));
+        if (httpStatus == HttpStatus.INTERNAL_SERVER_ERROR) {
+            eventPublisher.publishEvent(new ErrorEvent(this, ex));
+        }
 
         ErrorDetails error = new ErrorDetails(httpStatus, details, ((ServletWebRequest) request).getRequest().getRequestURI());
         return handleExceptionInternal(ex, error, new HttpHeaders(), httpStatus, request);
