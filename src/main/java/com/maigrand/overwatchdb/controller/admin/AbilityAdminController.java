@@ -1,4 +1,4 @@
-package com.maigrand.overwatchdb.controller;
+package com.maigrand.overwatchdb.controller.admin;
 
 import com.maigrand.overwatchdb.entity.Ability;
 import com.maigrand.overwatchdb.payload.AbilityDetails;

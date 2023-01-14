@@ -1,6 +1,6 @@
 package com.maigrand.overwatchdb.security;
 
-import com.maigrand.overwatchdb.entity.User;
+import com.maigrand.overwatchdb.entity.system.AdminUser;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,12 +38,12 @@ public class JwtTokenProvider {
     }
 
     public String generateToken(Authentication authentication, boolean rememberMe) {
-        User user = (User) authentication.getPrincipal();
+        AdminUser user = (AdminUser) authentication.getPrincipal();
 
         return generateToken(user, rememberMe);
     }
 
-    public String generateToken(User user, boolean rememberMe) {
+    public String generateToken(AdminUser user, boolean rememberMe) {
         return generateToken(user.getEmail(), rememberMe);
     }
 
@@ -55,7 +55,7 @@ public class JwtTokenProvider {
         return generateToken(authentication, false);
     }
 
-    public String generateToken(User user) {
+    public String generateToken(AdminUser user) {
         return generateToken(user, false);
     }
 

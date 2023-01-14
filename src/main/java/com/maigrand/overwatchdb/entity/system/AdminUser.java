@@ -1,4 +1,4 @@
-package com.maigrand.overwatchdb.entity;
+package com.maigrand.overwatchdb.entity.system;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +18,7 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User implements UserDetails {
+public class AdminUser implements UserDetails {
 
     @Id
     @Column(name = "id")
@@ -72,7 +72,7 @@ public class User implements UserDetails {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        User user = (User) o;
+        AdminUser user = (AdminUser) o;
         return active == user.active && Objects.equals(id, user.id) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
