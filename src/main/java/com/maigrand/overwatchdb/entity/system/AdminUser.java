@@ -34,6 +34,13 @@ public class AdminUser implements UserDetails {
     @Column(name = "active", nullable = false)
     private boolean active;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "admin_role_id",
+            foreignKey = @ForeignKey(name = "fk_admin_user_admin_role")
+    )
+    private AdminRole adminRole;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
