@@ -18,6 +18,5 @@ public class AbilityView {
         this.id = ability.getId();
         this.name = ability.getName();
         Optional.ofNullable(ability.getAimType()).ifPresent((aimType1) -> this.aimType = new AimTypeView(aimType1));
-        //this.aimType = new AimTypeView(ability.getAimType());
     }
 }
