@@ -66,14 +66,12 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
+                .antMatchers("/api/v1/admin/**")
+                .authenticated()
                 .antMatchers("/api/v1/admin/users/authenticate")
                 .permitAll()
-                .antMatchers("/v3/api-docs/**")
-                .permitAll()
-                .antMatchers("/swagger-ui/**")
-                .permitAll()
                 .anyRequest()
-                .authenticated();
+                .permitAll();
 
         httpSecurity.addFilterBefore(getAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
