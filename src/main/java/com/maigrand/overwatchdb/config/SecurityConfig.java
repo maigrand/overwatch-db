@@ -68,7 +68,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .antMatchers("/api/v1/admin/users/authenticate")
                 .permitAll()
-                .antMatchers("/api/v3/api-docs")
+                .antMatchers("/v3/api-docs/**")
                 .permitAll()
                 .antMatchers("/swagger-ui/**")
                 .permitAll()
