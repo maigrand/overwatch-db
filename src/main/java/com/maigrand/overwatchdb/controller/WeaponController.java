@@ -2,14 +2,13 @@ package com.maigrand.overwatchdb.controller;
 
 import com.maigrand.overwatchdb.entity.Weapon;
 import com.maigrand.overwatchdb.service.WeaponService;
+import com.maigrand.overwatchdb.view.WeaponView;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/weapon")
@@ -23,14 +22,15 @@ public class WeaponController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Weapon>> findAll() {
+    public ResponseEntity<List<WeaponView>> findAll() {
         List<Weapon> weapons = weaponService.findAll();
-        return ResponseEntity.ok(weapons);
+        List<WeaponView> weaponViews = weapons.stream().map(WeaponView::new).collect(Collectors.toList());
+        return ResponseEntity.ok(weaponViews);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Weapon> findById(@PathVariable("id") Integer id) {
+    public ResponseEntity<WeaponView> findById(@PathVariable("id") Integer id) {
         Weapon weapon = weaponService.findById(id);
-        return ResponseEntity.ok(weapon);
+        return ResponseEntity.ok(new WeaponView(weapon));
     }
 }
