@@ -10,6 +10,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Weapon {
 
     @Id
@@ -20,11 +21,36 @@ public class Weapon {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "usage", nullable = false)
+    private String usage;
+
+    @Column(name = "damage", nullable = false)
+    private String damage;
+
+    @Column(name = "falloff_range", nullable = false)
+    private String falloffRange;
+
+    @Column(name = "spread_angle", nullable = false)
+    private String spreadAngle;
+
+    @Column(name = "rate_of_fire", nullable = false)
+    private String rateOfFire;
+
+    @Column(name = "ammo", nullable = false)
+    private Integer ammo;
+
+    @Column(name = "reload_time", nullable = false)
+    private Float reloadTime;
+
+    @Column(name = "headshot", nullable = false)
+    private boolean headshot;
+
     @ManyToOne
     @JoinColumn(
             name = "aimtype_id",
             foreignKey = @ForeignKey(name = "fk_weapon_aimtype")
     )
+    @EqualsAndHashCode.Exclude
     private AimType aimType;
 
     @ManyToOne
@@ -33,24 +59,6 @@ public class Weapon {
             nullable = false,
             foreignKey = @ForeignKey(name = "fk_weapon_hero")
     )
+    @EqualsAndHashCode.Exclude
     private Hero hero;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Weapon weapon = (Weapon) o;
-        return Objects.equals(id, weapon.id) && Objects.equals(name, weapon.name)
-                && Objects.equals(aimType, weapon.aimType)
-                && Objects.equals(hero, weapon.hero);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, aimType, hero);
-    }
 }
