@@ -6,8 +6,6 @@ services:
     build: .
     ports:
       - "8080:8080"
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
@@ -17,6 +15,10 @@ services:
   db:
     image: 'postgres:alpine'
     container_name: db
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
