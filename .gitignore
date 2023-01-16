@@ -1,4 +1,5 @@
 application.properties
+postgres-data/
 HELP.md
 .gradle
 build/
