@@ -6,11 +6,13 @@ import com.maigrand.overwatchdb.payload.RoleDetails;
 import com.maigrand.overwatchdb.repository.RoleRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,8 +25,8 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    public List<Role> findAll() {
-        return roleRepository.findAll();
+    public Page<Role> findAll(Specification<Role> specification, Pageable pageable) {
+        return roleRepository.findAll(specification, pageable);
     }
 
     public Role findById(Integer id) {

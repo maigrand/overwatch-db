@@ -7,11 +7,13 @@ import com.maigrand.overwatchdb.payload.HeroDetails;
 import com.maigrand.overwatchdb.repository.HeroRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,8 +28,8 @@ public class HeroService {
         this.heroRepository = heroRepository;
     }
 
-    public List<Hero> findAll() {
-        return heroRepository.findAll();
+    public Page<Hero> findAll(Specification<Hero> specification, Pageable pageable) {
+        return heroRepository.findAll(specification, pageable);
     }
 
     public Hero findById(Integer id) {

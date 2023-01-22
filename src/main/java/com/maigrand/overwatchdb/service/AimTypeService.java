@@ -6,11 +6,13 @@ import com.maigrand.overwatchdb.payload.AimTypeDetails;
 import com.maigrand.overwatchdb.repository.AimTypeRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,8 +25,8 @@ public class AimTypeService {
         this.aimTypeRepository = aimTypeRepository;
     }
 
-    public List<AimType> findAll() {
-        return aimTypeRepository.findAll();
+    public Page<AimType> findAll(Specification<AimType> specification, Pageable pageable) {
+        return aimTypeRepository.findAll(specification, pageable);
     }
 
     public AimType findById(Integer id) {
