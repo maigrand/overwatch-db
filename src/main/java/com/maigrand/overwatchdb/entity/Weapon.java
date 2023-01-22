@@ -3,7 +3,6 @@ package com.maigrand.overwatchdb.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "weapon")
@@ -24,13 +23,19 @@ public class Weapon {
     @Column(name = "usage", nullable = false)
     private String usage;
 
-    @Column(name = "damage", nullable = false)
-    private String damage;
+    @Column(name = "damage_min", nullable = false)
+    private Float damageMin;
 
-    @Column(name = "falloff_range", nullable = false)
-    private String falloffRange;
+    @Column(name = "damage_max", nullable = false)
+    private Float damageMax;
 
-    @Column(name = "spread_angle", nullable = false)
+    @Column(name = "falloff_range_min", nullable = false)
+    private Integer falloffRangeMin;
+
+    @Column(name = "falloff_range_max", nullable = false)
+    private Integer falloffRangeMax;
+
+    @Column(name = "spread_angle")
     private String spreadAngle;
 
     @Column(name = "rate_of_fire", nullable = false)
@@ -44,6 +49,37 @@ public class Weapon {
 
     @Column(name = "headshot", nullable = false)
     private boolean headshot;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "blocked_by_barriers")
+    private boolean blockedByBarriers;
+
+    //@TODO: привязать к разным ability
+    //Many to Many
+    //Set<Ability> blockedBy;
+    //Set<Ability> boostedBy;
+//
+//    @Column(name = "blocked_by_defence_matrix")
+//    private boolean blockedByDefenceMatrix;
+//
+//    @Column(name = "blocked_by_kinetic_grasp")
+//    private boolean blockedByKineticGrasp;
+//
+//    @Column(name="blocked_by_deflect")
+//    private boolean blockedByDeflect;
+//
+//    @Column(name = "blocked_by_javelin_spin")
+//    private boolean blockedByJavelinSpin;
+//
+//    @Column(name="affected_by_damage_boost")
+//    private boolean affectedByDamageBoost;
+//
+//    @Column(name = "affected_by_amplification_matrix")
+//    private boolean affectedByAmplificationMatrix;
+
+    //@TODO: List<String> details
 
     @ManyToOne
     @JoinColumn(
