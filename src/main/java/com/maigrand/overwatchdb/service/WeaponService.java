@@ -6,11 +6,13 @@ import com.maigrand.overwatchdb.payload.WeaponDetails;
 import com.maigrand.overwatchdb.repository.WeaponRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,8 +29,8 @@ public class WeaponService {
         this.heroService = heroService;
     }
 
-    public List<Weapon> findAll() {
-        return weaponRepository.findAll();
+    public Page<Weapon> findAll(Specification<Weapon> specification, Pageable pageable) {
+        return weaponRepository.findAll(specification, pageable);
     }
 
     public Weapon findById(Integer id) {
