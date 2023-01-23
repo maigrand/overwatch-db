@@ -6,11 +6,13 @@ import com.maigrand.overwatchdb.payload.AbilityDetails;
 import com.maigrand.overwatchdb.repository.AbilityRepository;
 import com.maigrand.overwatchdb.validator.OnCreate;
 import com.maigrand.overwatchdb.validator.OnUpdate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,8 +29,8 @@ public class AbilityService {
         this.heroService = heroService;
     }
 
-    public List<Ability> findAll() {
-        return abilityRepository.findAll();
+    public Page<Ability> findAll(Specification<Ability> specification, Pageable pageable) {
+        return abilityRepository.findAll(specification, pageable);
     }
 
     public Ability findById(Integer id) {
